@@ -1,7 +1,8 @@
-# 《HelloGitHub》第 35 期
+# 《HelloGitHub》第 48 期
 >兴趣是最好的老师，**HelloGitHub** 就是帮你找到兴趣！
-
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/01/img/hello-github.jpg)
+<p align="center">
+    <img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/01/img/hello-github.jpg' style="max-width:100%;"></img>
+</p>
 
 ## 简介
 分享 GitHub 上有趣、入门级的开源项目。
@@ -14,226 +15,241 @@
 
 在浏览、参与这些项目的过程中，你将学习到**更多编程知识**、**提高编程技巧**、**找到编程的乐趣**。
 
-🎉 最后 [HelloGitHub](https://hellogithub.com) 这个项目就诞生了 🎉
+🎉 最后 HelloGitHub 这个项目就诞生了 🎉
 
----
-> **以下为本期内容**｜每个月 **28** 号发布最新一期｜[点击查看往期内容](https://github.com/521xueweihan/HelloGitHub#内容)
+## 目录
+- [C 项目](#C-项目)
+- [C++ 项目](#C-项目-1)
+- [CSS 项目](#CSS-项目)
+- [Go 项目](#Go-项目)
+- [Java 项目](#Java-项目)
+- [JavaScript 项目](#JavaScript-项目)
+- [Python 项目](#Python-项目)
+- [Ruby 项目](#Ruby-项目)
+- [其它](#其它)
+- [机器学习](#机器学习)
 
-#### C# 项目
-1、[IdentityServer4.Admin](https://github.com/skoruba/IdentityServer4.Admin)：免费开源的 IdentityServer4 与 Asp.Net Core Identity 管理器。IdentityServer4 官方的管理器是收费的，该项目很好的替代了官方管理器，可以方便的管理使用 IdentityServer4 所搭建的认证服务器
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/IdentityServer4.png)
+**Tips**：如果文中的图刷不出来，可以向我们反馈。也可以访问 [官网](https://hellogithub.com/) 获取更好的阅读体验。
 
-#### C++ 项目
-2、[FLIF](https://github.com/FLIF-hub/FLIF)：免费、新颖的无损图像格式。压缩比方面优于 PNG、lossless WebP、lossless BPG、lossless JPEG2000 等格式
+<p align="center">
+  <img src="https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/logo/weixin.png" style="max-width:30%;"></img><br>
+欢迎关注 HelloGitHub 公众号
+</p>
 
-#### Go 项目
-3、[cds](https://github.com/ovh/cds)：企业级开源持续集成系统。支持横向扩展、自带 UI、常用的持续集成构建等功能
+## 内容
+> **以下为本期内容**｜每个月 **28** 号发布最新一期
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/cds.gif)
+### C 项目
+1、[DungeonRush](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Rapiz1/DungeonRush)：元气贪吃蛇游戏。作者受到元气骑士的启发，基于贪吃蛇进行一些玩法上的创新。该项目适用于 C 语言初学者、第一次尝试使用跨平台图形库的同学，参考本项目就可以写出一个可玩性高的游戏，收获满满成就感
 
-4、[docui](https://github.com/skanehira/docui)：终端 Docker 管理工具，自带一个终端界面。使用该工具可以方便的通过界面管理 docker 不用再记那些命令。安装命令：
-```
-# Homebrew
-$ brew tap skanehira/docui
-$ brew install docui
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/DungeonRush.gif' style="max-width:80%; max-height=80%;"></img></p>
 
-# go get
-$ go get -d github.com/skanehira/docui
-$ cd $GOPATH/src/github.com/skanehira/docui
-$ GO111MODULE=on go install
-```
+2、[libhv](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/ithewei/libhv)：一个跨平台、简单易用的非阻塞 IO 事件循环库。用它可以快速的编写 HTTP 客户端/服务端，可提供高性能的 httpd 服务。项目模块划分清晰，代码可读性高，快去看下源代码吧。示例代码：
+```c++
+#include "HttpServer.h"
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/docui.png)
-
-5、[go-echarts](https://github.com/chenjiandongx/go-echarts)：Golang 代码生成对应的 echarts 可视化图表。实例代码：
-```go
-// example.go
-package main
-
-import (
-    "log"
-    "math/rand"
-    "os"
-    "time"
-
-    "github.com/chenjiandongx/go-echarts/charts"
-)
-
-var nameItems = []string{"衬衫", "牛仔裤", "运动裤", "袜子", "冲锋衣", "羊毛衫"}
-var seed = rand.NewSource(time.Now().UnixNano())
-
-func randInt() []int {
-    cnt := len(nameItems)
-    r := make([]int, 0)
-    for i := 0; i < cnt; i++ {
-        r = append(r, int(seed.Int63()) % 50)
-    }
-    return r
+int http_api_echo(HttpRequest* req, HttpResponse* res) {
+    res->body = req->body;
+    return 0;
 }
 
-func main() {
-    bar := charts.NewBar()
-    bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-示例图"}, charts.ToolboxOpts{Show: true})
-    bar.AddXAxis(nameItems).
-        AddYAxis("商家A", randInt()).
-        AddYAxis("商家B", randInt())
-    f, err := os.Create("bar.html")
-    if err != nil {
-        log.Println(err)
-    }
-    bar.Render(f)
+int main() {
+    HttpService service;
+    service.base_url = "/v1/api";
+    service.AddApi("/echo", HTTP_POST, http_api_echo);
+
+    http_server_t server;
+    server.port = 8080;
+    server.service = &service;
+    http_server_run(&server);
+    return 0;
 }
 ```
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/go-echarts.gif)
-
-6、[1m-go-websockets](https://github.com/eranyanay/1m-go-websockets)：该项目演示了如何用 Go 编写一个可以提供超过一百万个 websockets 连接、运行内存小于 1GB 的服务器。`setup.sh` 是用来创建 websocket 客户端的，`destroy.sh` 则用来销毁客户端
-
-#### Java 项目
-7、[SpringBoot-Learning](https://github.com/dyc87112/SpringBoot-Learning)：Spring Boot 教程
-
-8、[halo](https://github.com/ruibaby/halo)：Java 博客系统。在层出不穷的博客系统中，很难看到使用 Java 编写的简洁优雅的博客系统。该项目还具备着轻快且功能强大的特点，这些特性使它从众多 Java 博客系统脱颖而出。安装命令：
+3、[myscan](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/nobackdoor/myscan)：开源的多线程 socket 扫描 IP 端口的程序。目前仅支持 Windows 系统，代码简单可作为初学者学习项目
 ```
-# 安装 Halo
-$ yum install -y wget && wget -O halo-cli.sh https://git.io/fxHqp && bash halo-cli.sh -i
-# 更新 Halo
-$ bash halo-cli.sh -u
+命令：
+myscan -p Port1[,Port2,Port3...] [-t Thread](default 10) [-d] (DEBUG) StartIp EndIp
+例子：
+myscan -p 80 192.168.1.1 192.168.1.254
+myscan -p 21,22,23,80,443,8080 -t 256 192.168.1.1 192.168.1.254
 ```
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/halo.png)
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
 
-9、[APIJSON](https://github.com/TommyLemon/APIJSON)：快速开发 API 服务的框架。为简单的增删改查、复杂的查询、简单的事务操作提供了完全自动化的 API。大部分 HTTP 请求后端再也不用写接口了，也不用写文档了，适合中小型前后端分离的项目
+### C++ 项目
+4、[contour](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/christianparpart/contour)：一个使用 C++ 17 开发的终端模拟器。可在 Windows、Linux 和 MacOS 三大平台使用，支持字体连字 Font Ligatures（例如 Fira Code 字体）、GPU 加速渲染、背景模糊（Win10、KDE）、256 色、True Color 和配色主题
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/APIJSON.jpg)
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/contour.png' style="max-width:80%; max-height=80%;"></img></p>
 
-10、[IQL](https://github.com/teeyog/IQL)：基于 SparkSQL 实现了一套即席查询服务，具有如下特性：
-- 优雅的交互方式，支持多种 datasource/sink、多数据源混算
-- Spark 常驻服务，基于 zookeeper 的引擎自动发现
-- 多 session 模式实现并行查询
-- 等等
+5、[milvus](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/milvus-io/milvus)：一款开源的、针对海量特征向量的相似性搜索引擎。相比 Faiss 和 SPTAG 这样的算子库，Milvus 提供完整的向量数据更新，索引与查询框架。Milvus 利用 GPU 进行索引加速与查询加速，能大幅提高单机性能。部署使用简单，降低了 AI 应用落地的难度
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/IQL.png)
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
 
-#### JavaScript 项目
-11、[Gitter](https://github.com/huangjianke/Gitter)：GitHub 的小程序客户端。UI 设计漂亮，可作为小程序和 GitHub 结合的实战项目学习
+### CSS 项目
+6、[cssgridgenerator](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/sdras/cssgridgenerator)：在线通过点击动态生成基本的 CSS Grid 代码。[在线尝试](https://cssgrid-generator.netlify.com/)
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/Gitter.png)
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/cssgridgenerator.jpeg' style="max-width:80%; max-height=80%;"></img></p>
 
-12、[Motrix](https://github.com/agalwood/Motrix)：桌面下载工具，支持下载 HTTP、FTP、BT、磁力链、百度网盘等资源。界面简洁易用，采用 Vue + VueX + Element 的技术架构适合学习桌面应用开发
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/Motrix.png)
+### Go 项目
+7、[gops](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/google/gops)：展示当前系统运行了那些 Go 程序的工具，同时支持深入分析的参数
+```
+# 展示当前运行的所有 Go 程序
+$ gops
+983   980    uplink-soecks  go1.9   /usr/local/bin/uplink-soecks
+52697 52695  gops           go1.10  /Users/jbd/bin/gops
+4132  4130   foops        * go1.9   /Users/jbd/bin/foops
+51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
 
-13、[rainbow](https://github.com/ccampbell/rainbow)：体积小、易于使用、支持各种编程语言的语法高亮插件。该项目原理是通过正则过滤关键字，然后进行高亮。代码：
-```javascript
-// JS关键字判断
-Rainbow.extend('javascript', [
-
-    /**
-     * matches $. or $(
-     */
-    {
-        name: 'selector',
-        pattern: /\$(?=\.|\()/g
-    },
-    {
-        name: 'support',
-        pattern: /\b(window|document)\b/g
-    }
-...
+# 某一个 Go 程序的详细信息
+$ gops <pid>
+parent PID:	5985
+threads:	27
+memory usage:	0.199%
+cpu usage:	0.139%
+username:	jbd
+cmd+args:	/Applications/Splice.app/Contents/Resources/Splice Helper.app/Contents/MacOS/Splice Helper -pid 5985
+local/remote:	127.0.0.1:56765 <-> :0 (LISTEN)
+local/remote:	127.0.0.1:56765 <-> 127.0.0.1:50955 (ESTABLISHED)
+local/remote:	100.76.175.164:52353 <-> 54.241.191.232:443 (ESTABLISHED)
 ```
 
-14、[Chart.js](https://github.com/chartjs/Chart.js)：基于 canvas 的可视化库。可用于构建简单的 H5 图表，满足基本的日常可视化需求
+8、[awesome-golang-leetcode](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/kylesliu/awesome-golang-leetcode)：Go 语言刷 LeetCode。[在线阅读](https://leetcode.gin.sh/)
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/Chart.png)
+9、[wtf](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/wtfutil/wtf)：瞥一眼你的“私人管家”，终端个人信息面板。安装简单，还可通过配置文件设置你想看到的信息。设置可能需要花一些时间，但最终效果还是很可以的
 
-15、[ant-design-vue](https://github.com/vueComponent/ant-design-vue)：Ant Design 的 Vue 实现，该项目已经得到 [Ant Design 官方](https://vue.ant.design/docs/vue/introduce-cn/)认可
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/wtf.jpg' style="max-width:80%; max-height=80%;"></img></p>
 
-#### Objective-C 项目
-16、[iWeChat](https://github.com/lefex/iWeChat)：还原、探索微信 APP 的项目。通过该项目借鉴、学习微信客户端开发的相关设计与技术，也可以学到如何分析一个第三方 APP 的方法
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
 
-#### Python 项目
-17、[spug](https://github.com/openspug/spug)：使用 Python+Vue 实现的开源运维平台，前后端分离方便二次开发。该项目基于 Docker 镜像发布部署，方便安装和升级。支持运维常见功能：主机管理、任务计划管理、发布部署、监控告警等
+### Java 项目
+10、[MusicPlayer](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Mpmart08/MusicPlayer)：一款开源的 Java 桌面版音乐播放器，使用 JavaFX/Java 8 技术开发的项目
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/spug.gif)
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/MusicPlayer.png' style="max-width:80%; max-height=80%;"></img></p>
 
-18、[ruia](https://github.com/howie6879/ruia)：基于 asyncio 和 aiohttp 的 Python3 异步爬虫框架。它具有容易上手、非阻塞、扩展性强等特点，实例代码：
+11、[KafkaCenter](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/xaecbd/KafkaCenter)：Kafka 集群管理维护、生产消费监控平台
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/KafkaCenter.png' style="max-width:80%; max-height=80%;"></img></p>
+
+12、[incubator-dolphinscheduler](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/apache/incubator-dolphinscheduler)：分布式易扩展的可视化 DAG 工作流任务调度系统。致力于解决数据处理流程中错综复杂的依赖关系，使调度系统在数据处理流程中开箱即用
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/incubator-dolphinscheduler.jpg' style="max-width:80%; max-height=80%;"></img></p>
+
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
+
+### JavaScript 项目
+13、[G2](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/antvis/G2)：一套面向常规统计图表，以数据驱动的高交互可视化图形语法，具有高度的易用性和扩展性。使用 G2，你可以无需关注图表各种繁琐的实现细节，一条语句即可使用 Canvas 或 SVG 构建出各种各样的可交互的统计图表。G2 是整个蚂蚁金服 AntV 可视化解决方案中的一个环节，主要针对在高交互、高扩展的二维统计图表
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/G2.gif' style="max-width:80%; max-height=80%;"></img></p>
+
+14、[honeyed-words-generator](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/zerosoul/honeyed-words-generator)：一个“土味情话”在线生成项目。支持生成图片、分享二维码，[在线访问](https://works.yangerxiao.com/honeyed-words-generator/)。你们先看，我看完被撩到了我先去静静
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/honeyed-words-generator.png' style="max-width:80%; max-height=80%;"></img></p>
+
+15、[gitmoji-cli](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/carloscuesta/gitmoji-cli)：Git 交互式客户端，方便在提交信息中增加 emoji 表情。终于知道别人的提交信息为什么会有表情了，效果如下图：
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/gitmoji-cli.png' style="max-width:80%; max-height=80%;"></img></p>
+
+16、[panolens.js](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/pchen66/panolens.js)：基于 WebGL 的全景查看库。效果如下：
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/panolens.gif' style="max-width:80%; max-height=80%;"></img></p>
+
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
+
+### Python 项目
+17、[iredis](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/laixintao/iredis)：Python 语言写的支持自动补全、语法高亮、命令提示等的 Redis 命令行客户端。超好用，真是相见很晚啊
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/iredis.gif' style="max-width:80%; max-height=80%;"></img></p>
+
+18、[python-small-examples](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/jackzhenguo/python-small-examples)：Python 有趣、实用的代码示例集合。包含：Python 基础、小技巧、坑、文件操作、机器学习、绘图等，代码如下：
 ```python
-from ruia import TextField, Item, Spider
+# pyecharts 绘制水球图示例
+from pyecharts import options as opts
+from pyecharts.charts import Liquid, Page
+from pyecharts.globals import SymbolType
 
-class HackerNewsItem(Item):
-    target_item = TextField(css_select='tr.athing')
-    title = TextField(css_select='a.storylink')
+def liquid() -> Liquid:
+    c = (
+        Liquid()
+        .add("lq", [0.67, 0.30, 0.15])
+        .set_global_opts(title_opts=opts.TitleOpts(title="Liquid"))
+    )
+    return c
 
-
-class HackerNewsSpider(Spider):
-    start_urls = ['https://news.ycombinator.com/news?p=1']
-
-    async def parse(self, response):
-        async for item in HackerNewsItem.get_items(html=response.html):
-            yield item
-
-if __name__ == '__main__':
-    HackerNewsSpider.start()
+liquid().render('./img/liquid.html')
 ```
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/ruia.png)
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/python-small-examples.gif' style="max-width:80%; max-height=80%;"></img></p>
 
-#### 其它
-19、[devhub](https://github.com/devhubapp/devhub)：支持 Android、iOS、Web、Desktop 的 GitHub 管理通知客户端。能够帮你方便地接收、查看、管理 GitHub 消息、动态等
-
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/devhub.jpg)
-
-20、[neovim](https://github.com/neovim/neovim)：致力于改善 Vim 的维护、可扩展性等方面的编辑器。它功能强大、项目开发活跃、社区活跃，“新一代”的 Vim
-
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/neovim.png)
-
-21、[Micro8](https://github.com/Micropoor/Micro8)：浸淫渗透攻击的老鸟所写，内容一线深入浅出，主要是 Windows 系统场景。对于初中级安全从业人员、乙方安全测试、甲方安全自检、网络安全爱好者等提高都有很大的帮助
-
-22、[OI-WIKI](https://github.com/24OI/OI-WIKI)：免费、开放、持续更新的编程竞赛相关知识教程。包含竞赛的基础知识、常见题型、解题思路以及常用工具等内容，帮助大家更快速、深入地学习编程竞赛相关知识
-
-23、[USTC-CS-Courses-Resource](https://github.com/mbinary/USTC-CS-Courses-Resource)：该仓库收录中国科学技术大学众多课程资源。包括电子版教材、参考书、讲义、试卷、学习心得、习题解答等。以计算机学院课程为主，也包含公选课、自由选修等其他课程。
-
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/35/img/USTC-CS-Courses-Resource.png)
-
-#### 开源书籍
-24、[You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)：（英文）深入探讨 JavaScript 语言核心机制的书籍，适用于深入学习 JS。该书已出版，但在线阅读免费
-
-25、[d2l-zh](https://github.com/d2l-ai/d2l-zh)：《Dive into Deep Learning 》翻译版，即《动手学深度学习》。[在线阅读](http://zh.d2l.ai/)
-
-26、[cppwasm-book](https://github.com/3dgen/cppwasm-book)：《C/C++ 面向 WebAssembly 编程》，[在线阅读](https://3dgen.cn/cppwasm-book/)
-
-#### 机器学习
-27、[gpt-2](https://github.com/openai/gpt-2)：OpenAI 发布的 15 亿参数量通用语言模型 GPT-2，迄今最大模型！展示了一种构建语言处理系统的潜在方式，即根据自然发生的演示学习执行任务。实例代码：
+19、[httpx](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/encode/httpx)：使用简单方便，轻松实现异步请求的 HTTP 客户端（Python 3.8+)。示例代码：
 ```python
-export PYTHONIOENCODING=UTF-8
-python3 src/generate_unconditional_samples.py | tee samples
-python3 src/generate_unconditional_samples.py --top_k 40 --temperature 0.7 | tee samples
-python3 src/interactive_conditional_samples.py --top_k 40
+>>> import httpx
+# 同步
+>>> r = httpx.get('https://www.example.org/')
+>>> r
+<Response [200 OK]>
+>>> r.status_code
+# 异步
+>>> async with httpx.AsyncClient() as client:
+>>>     r = await client.get('https://www.example.org/')
+>>> r
+<Response [200 OK]>
 ```
 
-28、[deep-learning-drizzle](https://github.com/kmario23/deep-learning-drizzle)：世界计算机名校的深度学习、强化学习、机器学习、计算机视觉、自然语言处理等方面的公开课
+20、[rssant](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/anyant/rssant)：免费开源的 RSS 订阅项目，服务端是 Django 写的。你可以自己部署也可以直接使用[在线版](https://rss.anyant.com/)，远离嘈杂的推荐、广告，专注你订阅的内容
 
-29、[stanfordnlp](https://github.com/stanfordnlp/stanfordnlp)：适用于多种人类语言的 Stanford NLP 官方 Python 库。包含用于运行 CoNLL 2018 共享任务的最新完全神经管道以及访问 Java Stanford CoreNLP 服务器的软件包。实例代码：
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/rssant.png' style="max-width:80%; max-height=80%;"></img></p>
+
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
+
+### Ruby 项目
+21、[homeland](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/ruby-china/homeland)：开源免费、不限制商业使用的社区网站系统
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/homeland.png' style="max-width:80%; max-height=80%;"></img></p>
+
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
+
+### 其它
+22、[learnGitBranching](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/pcottle/learnGitBranching)：一个 Git 命令可视化学习项目。能够生动形象的帮助开发人员理解、学习 Git 命令，通过一系列刺激的关卡挑战，逐步深入的学习 Git 的强大功能。[在线尝试](https://learngitbranching.js.org/)
+
+<p align="center"><img src='https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/48/img/learnGitBranching.png' style="max-width:80%; max-height=80%;"></img></p>
+
+23、[Waking-Up](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/wolverinn/Waking-Up)：采用追问形式的后端面试问题总结。提问然后追问是面试常见模式，更加贴近真实面试
+
+24、[fucking-algorithm](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/labuladong/fucking-algorithm)：解 LeetCode 题目集合。号称“手撕 LeetCode 题目”，虽然之前推荐过不少解题集合，但是这次我还是没忍住。该项目讲究思路指南，解题思路描述清晰，真香啊
+
+25、[browser-2020](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/luruke/browser-2020)：该项目汇集了浏览器鲜为人知的一些功能
+
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
+
+### 机器学习
+26、[autokeras](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/keras-team/autokeras)：Keras 官方出品基于 Keras 的 AutoML 系统。支持 CPU 和 GPU 训练，傻瓜式 API，3 行代码就能训练一个模型。目前支持的任务：图像分类、图像回归、文本分类、结构化数据分类等。将人从手工选择超参数中解放出来，快速开发原型，官方口号“所有人都能使用机器学习”，[官网](https://autokeras.com/)
 ```python
-import stanfordnlp
-stanfordnlp.download('en')   # This downloads the English models for the neural pipeline
-nlp = stanfordnlp.Pipeline() # This sets up a default neural pipeline in English
-doc = nlp("Barack Obama was born in Hawaii.  He was elected president in 2008.")
-doc.sentences[0].print_dependencies()
+# 安装命令 pip install autokeras
+import autokeras as ak
+
+clf = ak.ImageClassifier()
+clf.fit(x_train, y_train)
+results = clf.predict(x_test)
 ```
 
-30、[Tensorflow-Cookbook](https://github.com/taki0112/Tensorflow-Cookbook)：易学易用的 Tensorflow 教程
+<p align="center"><a href="#目录">🔙 返回目录 🔙</a></p><br>
 
 
+
+<p align="center">
+    <a href="https://github.com/521xueweihan/HelloGitHub/blob/master/content/47/HelloGitHub47.md">『上一期』</a> | <a href='https://github.com/521xueweihan/HelloGitHub/issues/899'>反馈和建议</a> | 『下一期』
+</p>
 
 ---
+<p align="center">
+    看完了，还不够？<a href='https://github.com/ruanyf/weekly'><科技爱好者周刊></a>。还不过瘾，那就看看 <a href='https://github.com/521xueweihan/HelloGitHub#%E5%86%85%E5%AE%B9'><往期内容></a>吧。<br>
+    <a href='https://github.com/521xueweihan/HelloGitHub/issues/new'>点击分享发现的有趣项目</a>
+</p>
 
-## 换种方式阅读
-- **网站：** https://hellogithub.com
-- **GitBook：** https://gitbook.hellogithub.com
 
 ## 声明
-如果你发现了好玩、有意义的开源项目 [点击这里](https://github.com/521xueweihan/HelloGitHub/issues/new) 分享你觉得有意思的项目。
-
-**欢迎转载，请注明出处和作者，同时保留声明。**
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><img alt="知识共享许可协议" style="border-width: 0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png"></a><br>本作品采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">署名-非商业性使用-禁止演绎 4.0 国际</a> 进行许可。
