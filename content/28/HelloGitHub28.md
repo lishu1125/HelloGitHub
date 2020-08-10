@@ -50,7 +50,7 @@
 ### C++ 项目
 2、[cpp-cheat-sheet](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/gibsjose/cpp-cheat-sheet)：能够帮你通过 Google 和 NASA 面试的 C++ 数据结构和算法的 cheat sheet（英文）
 
-3、[cpp-taskflow](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/cpp-taskflow/cpp-taskflow)：一个 C++ 头文件库，让你以简单的几行代码就可以实现高效的并发。示例代码如下：
+3、[taskflow](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/taskflow/taskflow)：一个 C++ 头文件库，让你以简单的几行代码就可以实现高效的并发。示例代码如下：
 ```c++
 #include "taskflow.hpp"  // the only include you need
 
@@ -90,7 +90,7 @@ int main(){
 
 6、[go-cloud](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/google/go-cloud)：还在为兼容不同的云平台 SDK 而烦恼吗？go-cloud 通过封装不同云平台的接口，向用户提供统一的 API。例如：阿里云和腾讯云的存储桶 API 不一样，但是通过 go-cloud 的封装，可以使用统一的 API 调用
 
-7、[night-reading-go](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/developer-learning/night-reading-go)：Go 夜读，该项目每周四晚上更新 Go 源码阅读以及线下技术讨论。难得的中文 Golang 源码解析，包含文档和YouTube 视频，干货满满
+7、[night](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/talk-go/night)：Go 夜读，该项目每周四晚上更新 Go 源码阅读以及线下技术讨论。难得的中文 Golang 源码解析，包含文档和YouTube 视频，干货满满
 
 8、[xinge-api-Golang](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/xingePush/xinge-api-Golang)：腾讯信鸽 push v3 版的 Golang SDK。支持函数式配置项、标签推送、全平台推送、批量推送等
 
